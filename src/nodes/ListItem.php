@@ -26,15 +26,15 @@ class ListItem extends Node
             $newContent = [];
 
             foreach ($this->content as $contentNode) {
-                if ($contentNode instanceof Paragraph) {
-                    $content = $contentNode['content'] ?? [];
+                // if ($contentNode instanceof Paragraph) {
+                //     $content = $contentNode['content'] ?? [];
 
-                    foreach ($content as $innerNode) {
-                        $newContent[] = $innerNode;
-                    }
-                } else {
+                //     foreach ($content as $innerNode) {
+                //         $newContent[] = $innerNode;
+                //     }
+                // } else {
                     $newContent[] = $contentNode;
-                }
+                // }
             }
 
             $this->content = $newContent;

@@ -1,5 +1,73 @@
 # Changelog
 
+## 2.1.28 - 2025-07-18
+
+### Fixed
+- Fix an error migrating Vizy 1 content containing Vizy Block fields with `<iframe>` content.
+
+## 2.1.27 - 2025-05-20
+
+### Changed
+- Vizy Blocks now only validate enabled blocks.
+
+## 2.1.26 - 2025-05-01
+
+### Added
+- Add support for `utf8mb4` encoded values.
+- Add Vizy field context to block templates.
+
+### Fixed
+- Fix an error with Vizy blocks containing relation fields.
+- Fix migration from Craft 3, where special characters and HTML entities weren’t being decoded and content not correctly sanitized.
+- Fix an error when using relation fields like Assets in Vizy blocks.
+
+## 2.1.25 - 2025-02-02
+
+### Added
+- Add `Node::EVENT_MODIFY_RENDERED_NODE` event to modify the fully rendered HTML of a node.
+
+## 2.1.24 - 2024-11-14
+
+### Fixed
+- Fix `listenForChanges` check to include certain elements (element fields) which would prevent click event detection.
+
+## 2.1.23 - 2024-10-09
+
+### Added
+- Add support for modifying nested nodes through Twig (for Table nodes).
+
+### Fixed
+- Fix an error when inserting links on non-multi site installs.
+- Fix an error when trying to deserialize HTML content.
+- Fix Vizy Block group name being incorrectly saved as uppercase.
+
+## 2.1.22 - 2024-08-14
+
+### Fixed
+- Fix an issue with multiple Vizy editors with different formatting or table configs.
+- Fix buttons styles not working correctly.
+
+## 2.1.21 - 2024-08-11
+
+### Fixed
+- Fix some click events in Vizy Block fields not triggering change event listener.
+- Fix an error when initializing Vizy fields multiple times.
+
+## 2.1.20 - 2024-07-21
+
+### Added
+- Add the ability to set links to current site, or specific site for element-based links.
+
+### Changed
+- Change change-detection mechanism incorrectly flagging changed JSON due to discrepancies with PHP vs JS JSON encoding.
+
+### Fixed
+- Fix an error when creating search indexes.
+- Fix default site for Link nodes.
+- Fix Image node URLs not being dynamics when non-transforms are selected.
+- Fix default transform value for Image nodes.
+- Fix change detection mechanism for Vizy Blocks.
+
 ## 2.1.19 - 2024-04-29
 
 ### Changed

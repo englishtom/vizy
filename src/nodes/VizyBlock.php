@@ -167,8 +167,10 @@ class VizyBlock extends Node
 
         // Create a fake element with the same fieldtype as our block
         $block = $this->getBlockElement();
+        $field = $this->getField();
 
         $variables = array_merge($this->toArray(), $block->getFieldValues());
+        $variables[$field->handle] = $field;
 
         return $view->renderTemplate($this->_blockType->template, $variables, View::TEMPLATE_MODE_SITE);
     }
@@ -252,7 +254,9 @@ class VizyBlock extends Node
 
                 // Ensure we call each field's `afterElementSave` method. This would be auto-done
                 // if a VizyBlock node was an element, and we were saving that.
-                $field->afterElementSave($block, true);
+                // We have to pass `isNew = false` for relation fields to prevent creating relations records
+                // but still important to call for things like Assets fields, where files are uploaded.
+                $field->afterElementSave($block, false);
 
                 // Process all Matrix/Super Table fields and their blocks in the same manner.
                 if ($field instanceof MatrixField || $field instanceof SuperTable) {

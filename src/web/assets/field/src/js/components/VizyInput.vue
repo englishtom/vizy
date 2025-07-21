@@ -1,5 +1,5 @@
 <template>
-    <div @click="listenForChanges = true">
+    <div @mousedown="listenForChanges = true">
         <div v-if="editor" class="vui-rich-text" :class="{ 'has-focus': isFocused() }" :style="{ '--rows': settings.initialRows }">
             <vizy-user-template v-if="getUserTemplates('beforeMenuBar')" :template="getUserTemplates('beforeMenuBar')" :vizy-field="this" />
             <menu-bar v-if="buttons.length && richTextEnabled" ref="toolbar" :buttons="buttons" :editor="editor" :field="this" />
@@ -367,8 +367,9 @@ export default {
         },
 
         decodeHtml(html) {
+            // No need to serialize it again just to deserialize it
             if (Array.isArray(html)) {
-                html = JSON.stringify(html);
+                return html;
             }
 
             // The most easiest/efficient way to convert htmlentities...
